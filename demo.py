@@ -6,8 +6,6 @@ interact with navigation elements, and summarize content.
 
 import os
 import base64
-import json
-from io import BytesIO
 from playwright.sync_api import sync_playwright
 from openai import AzureOpenAI
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
