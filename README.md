@@ -36,6 +36,13 @@ pip install -r requirements.txt
 playwright install chromium
 ```
 
+4. Verify your setup:
+```bash
+python verify_setup.py
+```
+
+This will check that all dependencies are installed correctly.
+
 ## Configuration
 
 1. Copy the `.env.example` file to `.env`:
@@ -72,6 +79,8 @@ The demo will:
 5. Click on "Throttling" in the left navigation
 6. Use the Computer Use model to summarize that page content
 7. Output both summaries to the console
+
+See [EXAMPLE_OUTPUT.md](EXAMPLE_OUTPUT.md) for an example of what the output looks like.
 
 ## How It Works
 
