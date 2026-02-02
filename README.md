@@ -66,15 +66,25 @@ export AZURE_OPENAI_DEPLOYMENT_NAME='computer-use-preview'
 
 ## Usage
 
-Run the demo:
+### Quick start
 ```bash
-python demo.py
+python -m venv .venv
+. .venv/bin/activate  # Windows PowerShell: .\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python -m playwright install chromium
+
+# set required env vars (example)
+set AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+# leave AZURE_OPENAI_API_KEY unset to use DefaultAzureCredential, or set it if your resource allows key auth
+set AZURE_OPENAI_DEPLOYMENT_NAME=computer-use-preview
+
+python app.py
 ```
 
 The demo will:
 1. Launch a browser
 2. Navigate to https://learn.microsoft.com/en-us/rest/api/fabric/articles/api-structure
-3. Click on "Identity Scope" in the left navigation
+3. Click on "Identity Support" in the left navigation
 4. Use the Computer Use model to summarize the page content
 5. Click on "Throttling" in the left navigation
 6. Use the Computer Use model to summarize that page content
@@ -101,7 +111,7 @@ This demo simplifies the process by using Playwright for browser automation and 
                   │
                   ▼
 ┌─────────────────────────────────────────────┐
-│  Click "Identity Scope" Navigation Item     │
+│  Click "Identity Support" Navigation Item     │
 └─────────────────┬───────────────────────────┘
                   │
                   ▼

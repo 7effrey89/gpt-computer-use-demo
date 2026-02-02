@@ -27,12 +27,12 @@ def test_imports():
     try:
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         # We'll just check if the file exists and can be parsed
-        with open('demo.py', 'r') as f:
+            with open('app.py', 'r') as f:
             code = f.read()
-            compile(code, 'demo.py', 'exec')
+                compile(code, 'app.py', 'exec')
         print("✓ demo.py (syntax valid)")
     except Exception as e:
-        print(f"✗ demo.py: {e}")
+            print(f"✗ app.py: {e}")
         return False
     
     return True
@@ -42,7 +42,7 @@ def test_file_structure():
     print("\nTesting file structure...")
     
     required_files = [
-        'demo.py',
+            'app.py',
         'requirements.txt',
         '.env.example',
         '.gitignore',
@@ -105,7 +105,7 @@ def test_demo_class():
     """Test that the demo script has the expected structure."""
     print("\nTesting demo.py structure...")
     
-    with open('demo.py', 'r') as f:
+        with open('app.py', 'r') as f:
         demo_content = f.read()
     
     expected_elements = [
@@ -117,7 +117,7 @@ def test_demo_class():
         'def navigate_to_page',
         'def click_navigation_item',
         'def run_demo',
-        'Identity Scope',
+        'Identity Support',
         'Throttling'
     ]
     

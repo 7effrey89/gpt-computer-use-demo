@@ -135,7 +135,7 @@ def main():
             print("✓ Environment variables are set - you're ready to run the demo!")
         else:
             print("⚠ Remember to set environment variables before running the demo.")
-        print("\nRun the demo with: python demo.py")
+        print("\nRun the demo with: python app.py")
         return 0
     else:
         print("\n✗ Some critical checks failed. Please install missing dependencies:")

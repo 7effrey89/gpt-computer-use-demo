@@ -17,7 +17,8 @@ class ComputerUseDemo:
         # Azure OpenAI configuration
         # These should be set as environment variables
         self.endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-        self.api_key = os.getenv("AZURE_OPENAI_API_KEY")
+        # Treat empty/undefined keys as missing so we fall back to AAD auth
+        self.api_key = os.getenv("AZURE_OPENAI_API_KEY") or None
         self.deployment_name = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "computer-use-preview")
         
         # Initialize Azure OpenAI client
@@ -27,6 +28,7 @@ class ComputerUseDemo:
                 azure_endpoint=self.endpoint,
                 api_key=self.api_key
             )
+            print("Using Azure OpenAI authentication via API key")
         else:
             # Use DefaultAzureCredential for authentication
             token_provider = get_bearer_token_provider(
@@ -38,6 +40,7 @@ class ComputerUseDemo:
                 azure_endpoint=self.endpoint,
                 azure_ad_token_provider=token_provider
             )
+            print("Using Azure OpenAI authentication via DefaultAzureCredential (no API key set)")
         
         self.browser = None
         self.page = None
@@ -136,20 +139,20 @@ class ComputerUseDemo:
             target_url = "https://learn.microsoft.com/en-us/rest/api/fabric/articles/api-structure"
             self.navigate_to_page(target_url)
             
-            # Task 1: Click on "Identity Scope" and summarize
+            # Task 1: Click on "Identity Support" and summarize
             print("\n" + "="*60)
-            print("TASK 1: Identity Scope")
+            print("TASK 1: Identity Support")
             print("="*60)
             
-            if self.click_navigation_item("Identity Scope"):
+            if self.click_navigation_item("Identity Support"):
                 screenshot = self.take_screenshot()
                 summary = self.summarize_content(screenshot)
                 
-                print("\n--- Summary of 'Identity Scope' page ---")
+                print("\n--- Summary of 'Identity Support' page ---")
                 print(summary)
                 print("-" * 60)
             else:
-                print("Failed to click on 'Identity Scope'")
+                print("Failed to click on 'Identity Support'")
             
             # Task 2: Click on "Throttling" and summarize
             print("\n" + "="*60)
@@ -187,11 +190,11 @@ def main():
     print("="*60)
     print("\nThis demo will:")
     print("1. Navigate to the Microsoft Fabric API Structure documentation")
-    print("2. Click on 'Identity Scope' and summarize the content")
+    print("2. Click on 'Identity Support' and summarize the content")
     print("3. Click on 'Throttling' and summarize the content")
     print("\nRequired environment variables:")
-    print("  - AZURE_OPENAI_ENDPOINT: Your Azure OpenAI endpoint")
-    print("  - AZURE_OPENAI_API_KEY: Your API key (or use Azure credential)")
+    print("  - AZURE_OPENAI_ENDPOINT: Your Azure OpenAI endpoint (required)")
+    print("  - AZURE_OPENAI_API_KEY: Your API key (optional; omitted falls back to DefaultAzureCredential)")
     print("  - AZURE_OPENAI_DEPLOYMENT_NAME: Your deployment name (default: computer-use-preview)")
     print("="*60 + "\n")
     

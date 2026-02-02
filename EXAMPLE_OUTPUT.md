@@ -9,7 +9,7 @@ GPT Computer Use Demo
 
 This demo will:
 1. Navigate to the Microsoft Fabric API Structure documentation
-2. Click on 'Identity Scope' and summarize the content
+2. Click on 'Identity Support' and summarize the content
 3. Click on 'Throttling' and summarize the content
 
 Required environment variables:
@@ -23,13 +23,13 @@ Starting browser...
 === Navigating to https://learn.microsoft.com/en-us/rest/api/fabric/articles/api-structure ===
 
 ============================================================
-TASK 1: Identity Scope
+TASK 1: Identity Support
 ============================================================
 
-=== Clicking on 'Identity Scope' in navigation ===
+=== Clicking on 'Identity Support' in navigation ===
 
---- Summary of 'Identity Scope' page ---
-The Identity Scope documentation explains how authentication and authorization work in Microsoft Fabric's REST API. Key points include:
+--- Summary of 'Identity Support' page ---
+The Identity Support documentation explains how authentication and authorization work in Microsoft Fabric's REST API. Key points include:
 
 1. **Authentication Methods**: The API supports Azure Active Directory (Azure AD) authentication using OAuth 2.0 tokens. Applications must register with Azure AD to obtain credentials.
 
